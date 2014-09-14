@@ -26,7 +26,7 @@ Promiser.prototype.do = function(){
 			_promise.fulfill(success);
 		}, 
 		function(error){
-			_promise.break(error);
+			_promise.breach(error);
 		});
 }
 ```
