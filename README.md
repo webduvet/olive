@@ -11,7 +11,35 @@ olive.awesome(); // "awesome"
 ```
 
 ## Documentation
-_(Coming soon)_
+The object with asynchrounous operation needs to return a promise
+
+```javascript
+var Promise = require('olive').Promise;
+
+var Promiser = function(){
+}
+
+Promiser.prototype.do = function(){
+	var _promise = new Promise();
+	someAsyncOp(
+		function(success){
+			_promise.fulfill(success);
+		}, 
+		function(error){
+			_promise.break(error);
+		});
+}
+```
+
+the promise when resolved calls the resolver function with the expected arguments
+
+```
+var promised = promiser.do();
+
+promised
+	.than(console.log)
+	.or(console.log);
+```
 
 ## Examples
 _(Coming soon)_

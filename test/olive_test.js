@@ -22,7 +22,7 @@ var olive = require('../lib/olive.js');
     test.ifError(value)
 */
 
-exports['awesome'] = {
+exports['Olive'] = {
   setUp: function(done) {
     // setup here
     done();
@@ -30,7 +30,18 @@ exports['awesome'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    test.equal(olive.awesome(), 'awesome', 'should be awesome.');
+    test.equal(typeof olive, 'function', 'should be function.');
     test.done();
   },
+
+	'test simple promise': function (test) {
+		var deferred = function(cb){
+			setTimeout(function(){
+				cb(42);
+			}.bind(this), 1500);
+		}
+
+		var
+	}
+
 };
