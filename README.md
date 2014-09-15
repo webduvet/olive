@@ -1,6 +1,5 @@
 # olive
-
-The best project ever.
+Fake Promise simple and small library based on event.EventEmitter
 
 ## Getting Started
 Install the module with: `npm install olive`
