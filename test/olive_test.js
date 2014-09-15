@@ -1,6 +1,7 @@
 'use strict';
 
 var Promise = require('../lib/olive.js').Promise;
+var Util = require('util');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -83,5 +84,62 @@ exports['Olive'] = {
 				test.done();
 			});
 	},
+
+	'test lasy initialization of an object version 1': function(test) {
+
+		// this object needs async action in constructor
+		// how can we call the object methods?
+		// shell we return the promise?
+		var Late = function(){
+			this._val = new Promise();
+			setTimeout(function(){
+				this._val.fulfill("initialized");
+			}.bind(this),1000);
+		}
+
+		Late.prototype.val = function(){
+			return this._val;
+		}
+
+		var late = new Late();
+
+		late.val()
+			.then(function(param){
+				console.log(param);
+				test.done();
+			});
+
+	},
+
+	'test lasy initialization of an object version 2': function(test) {
+
+		// this object needs async action in constructor
+		// how can we call the object methods?
+		// shell we return the promise?
+		var Late = function(){
+			this._val = null;
+			setTimeout(function(){
+				this._val = "initialized";
+				this.fulfill(this);
+			}.bind(this),1000);
+			return this;
+		}
+
+		Util.inherits(Late, Promise);
+
+		Late.prototype.val = function(){
+			return this._val;
+		}
+
+		var late = new Late();
+
+		late
+			.then(function(){
+				console.log(late.val());
+				test.done();
+			})
+			.or(console.log);
+
+	}
 
 };
