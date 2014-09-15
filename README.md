@@ -4,15 +4,32 @@ The best project ever.
 
 ## Getting Started
 Install the module with: `npm install olive`
-
-```javascript
-var olive = require('olive');
-olive.awesome(); // "awesome"
+```
+var Promise = require('olive').Promise;
 ```
 
 ## Documentation
-The object with asynchrounous operation needs to return a promise
+The object with asynchrounous operation needs to return a promise 
+which by the end of the operation is either fulfilled or broken
+```
+promise.fulfill(arg1[, arg2[, ...]]);
+```
+or
+```
+promise.breach(arg1[, arg2[, ...]]);
+```
+object waiting for the promise needs to handle both outcomes
+and takes as argument a resolving function either anonymous or named
 
+```
+promised_result
+	.than(function(arg1[, arg2[, ...]]){
+		// function body
+		})
+	.or(console.log)
+```
+
+## Examples
 ```javascript
 var Promise = require('olive').Promise;
 
@@ -40,9 +57,6 @@ promised
 	.than(console.log)
 	.or(console.log);
 ```
-
-## Examples
-_(Coming soon)_
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
