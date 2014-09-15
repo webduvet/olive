@@ -85,7 +85,7 @@ exports['Olive'] = {
 			});
 	},
 
-	'test lasy initialization of an object version 1': function(test) {
+	'test lasy initialization of an object\'s methods return promise': function(test) {
 
 		// this object needs async action in constructor
 		// how can we call the object methods?
@@ -105,13 +105,13 @@ exports['Olive'] = {
 
 		late.val()
 			.then(function(param){
-				console.log(param);
+				test.equals(param, "initialized", "expected to return initialized");
 				test.done();
 			});
 
 	},
 
-	'test lasy initialization of an object version 2': function(test) {
+	'test async initialization of an object Object inherits from Promise': function(test) {
 
 		// this object needs async action in constructor
 		// how can we call the object methods?
@@ -135,7 +135,7 @@ exports['Olive'] = {
 
 		late
 			.then(function(){
-				console.log(late.val());
+				test.equals(late.val(), "initialized", "expected to return initialized");
 				test.done();
 			})
 			.or(console.log);
