@@ -48,12 +48,18 @@ exports['Olive'] = {
 
 		var result = task();
 		result
-			.than(function(v1, v2){
+			.then(function(v1, v2){
 				test.equals(v1, "fulfilled", "expecting value 'fulfilled'");
 				test.equals(v2, 42, "expecting second argument which is 42 ");
 				test.done();
 			})
+			.then(function(){setTimeout(function(){console.log("second then")},700)})
+			.then(console.log)
 			.or(console.log);
+
+		function change(a,b){
+			
+		}
 	},
 
 	'test simple broken promise': function (test) {
@@ -70,7 +76,7 @@ exports['Olive'] = {
 
 		var result = task();
 		result
-			.than(console.log)
+			.then(console.log)
 			.or(function(v1, v2){
 				test.equals(v1, "error", "expecting value 'error'");
 				test.equals(v2, 404, "expecting second argument which is 404 ");
