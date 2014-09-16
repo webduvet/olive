@@ -47,6 +47,7 @@ exports['Olive'] = {
 			return promise;
 		}
 
+		//getting promise object
 		var result = task();
 		result
 			.then(function(v1, v2){
@@ -88,7 +89,7 @@ exports['Olive'] = {
 			});
 	},
 
-	'test lasy initialization of an object\'s methods return promise': function(test) {
+	'test async initialization of an object\'s methods return promise': function(test) {
 
 		// this object needs async action in constructor
 		// how can we call the object methods?
@@ -114,7 +115,7 @@ exports['Olive'] = {
 
 	},
 
-	'test async initialization of an object Object inherits from Promise': function(test) {
+	'test async initialization of an object Object inherits from Promise, deffered like approach': function(test) {
 
 		// this object needs async action in constructor
 		// how can we call the object methods?
