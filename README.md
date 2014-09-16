@@ -1,5 +1,11 @@
 # olive
 Fake Promise simple and small library based on event.EventEmitter
+ATM it is jus a playground and does not follow any convention
+
+the promise can have multiple then calls passing the promised values as parameters
+
+I think it could be handy to have then alternative behaving in synchronous maner
+
 
 ## Getting Started
 Install the module with: `npm install olive`

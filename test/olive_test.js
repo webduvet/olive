@@ -54,8 +54,11 @@ exports['Olive'] = {
 				test.equals(v2, 42, "expecting second argument which is 42 ");
 				test.done();
 			})
-			.then(function(){setTimeout(function(){console.log("second then")},700)})
+			.then(function(){setTimeout(function(){console.log("second then, async op")},700)})
 			.then(console.log)
+			.then(function(){
+				console.log.apply(null, arguments);
+			})
 			.or(console.log);
 
 		function change(a,b){
